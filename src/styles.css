@@ -1,0 +1,107 @@
+body {
+    margin: 0;
+    text-align: center;
+  }
+  
+  a {
+    list-style: none;
+    color: black;
+  }
+  
+  .navbar div a {
+    color: white;
+    margin: 0 1em;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .navbar {
+    background: #515f7d;
+    box-shadow: 0px 1px 2px gray;
+    margin-bottom: 15px;
+    padding: 5px;
+  }
+  
+  .navbar div {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .signup,
+  .login,
+  .add-project,
+  .edit-project,
+  .add-task {
+    background: #608dd5;
+    border: 1px solid grey;
+    box-shadow: 0px 2px 3px grey;
+    width: 400px;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .login {
+    background-color: #94a7c8;
+  }
+  
+  .add-project,
+  .add-task {
+    background-color: #f9eec3;
+  }
+  
+  .signup form,
+  .login form,
+  .add-project form,
+  .edit-project form,
+  .add-task form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  label {
+    width: 200px;
+    display: block;
+  }
+  
+  input,
+  textarea {
+    width: 200px;
+    padding: 10px;
+    display: inline-block;
+    margin: 10px;
+  }
+  
+  button,
+  select {
+    padding: 5px 10px;
+    min-width: 50px;
+    margin: 5px;
+    font-size: 18px;
+  }
+  
+  .error-msg {
+    color: red;
+  }
+  
+  .card {
+    width: 400px;
+    padding: 10px;
+    box-shadow: 0px 2px 3px grey;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background: #94a7c8;
+    border-radius: 4px;
+  }
+  
+  .project-card h3::after {
+    content: url("https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/m3/icon-expand.png");
+    margin-left: 5px;
+  }
+  
+  .task-card {
+    background-color: #dfeef9;
+  }

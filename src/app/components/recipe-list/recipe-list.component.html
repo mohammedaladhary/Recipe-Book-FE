@@ -1,0 +1,9 @@
+<app-nav-bar></app-nav-bar>
+<div class="centered-column">
+    <div *ngFor="let recipe of recipes" (click) = "onSelect(recipe)"class="recipe-card">
+      <h2>{{ recipe.recipeName }}</h2>
+      <img src="assets/images/cheese-burger.jpeg" alt="{{ recipe.recipeName }}" class="recipe-image">
+      <p>Calories: {{ recipe.calories}}</p>
+      <p>Description: {{ recipe.description}}</p>
+      </div>
+  </div>
