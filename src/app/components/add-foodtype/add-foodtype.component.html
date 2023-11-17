@@ -1,0 +1,9 @@
+<app-nav-bar></app-nav-bar>
+<h1>Create a new Food Type</h1>
+<form (ngSubmit)="createFoodType()" [formGroup]="foodTypeForm">
+
+    <input type="text" placeholder="Name" formControlName="foodTypeName"><br>
+    <p *ngIf="foodTypeNameInput.invalid && foodTypeNameInput.touched">Name is required.</p>
+  
+    <button type="submit" [disabled]="foodTypeForm.invalid">Create</button>
+  </form>

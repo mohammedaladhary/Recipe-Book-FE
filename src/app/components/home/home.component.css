@@ -1,0 +1,15 @@
+
+.content {
+    margin: 20px;
+  }
+  
+  footer {
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-align: center;
+  }
+  .home-image {
+    height: 250px; /* Adjust the height as needed */
+    width: auto; /* Let the width scale proportionally */
+
+  }

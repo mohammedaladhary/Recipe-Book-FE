@@ -10,8 +10,15 @@ import { HomeComponent } from './components/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AddFoodtypeComponent } from './components/add-foodtype/add-foodtype.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from "@angular/material/input";
+import { FoodTypeListComponent } from './components/food-type-list/food-type-list.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +29,22 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     SignupComponent,
     SigninComponent,
-    NavBarComponent
+    NavBarComponent,
+    AddFoodtypeComponent,
+    PageNotFoundComponent,
+    FoodTypeListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
+    // MatInputModule,
+    // MatFormFieldModule,
+    // MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

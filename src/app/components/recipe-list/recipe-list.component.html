@@ -1,9 +1,23 @@
 <app-nav-bar></app-nav-bar>
+<!-- Your existing HTML template -->
+
 <div class="centered-column">
-    <div *ngFor="let recipe of recipes" (click) = "onSelect(recipe)"class="recipe-card">
-      <h2>{{ recipe.recipeName }}</h2>
-      <img src="assets/images/cheese-burger.jpeg" alt="{{ recipe.recipeName }}" class="recipe-image">
-      <p>Calories: {{ recipe.calories}}</p>
-      <p>Description: {{ recipe.description}}</p>
-      </div>
+  <div *ngFor="let recipe of recipes" (click)="onSelect(recipe)" class="recipe-card">
+    <h2>{{ recipe.recipeName }}</h2>
+    <img src="assets/images/cheese-burger.jpeg" alt="{{ recipe.recipeName }}" class="recipe-image">
+    <p>Calories:<br> {{ recipe.calories }}</p>
+    <p>Description:<br> {{ recipe.description }}</p>
+    <p>Food Type: <br> {{ recipe.foodTypeName }}</p>
+
+    <!-- Buttons for update and delete -->
+    <div class="recipe-buttons">
+      <!-- Button to update -->
+      <button>Update</button>
+      <!-- <button (click)="startUpdate(recipe)">Update</button> -->
+
+      <!-- Button to delete -->
+      <button>Delete</button>
+      <!-- <button (click)="deleteRecipe(recipe.recipeId)">Delete</button> -->
+    </div>
   </div>
+</div>

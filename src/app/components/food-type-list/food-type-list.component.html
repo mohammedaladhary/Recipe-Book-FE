@@ -1,0 +1,20 @@
+<app-nav-bar></app-nav-bar>
+<h1>Food Types</h1>
+
+<div class="centered-column">
+    <div *ngFor="let foodType of foodType" (click)="onSelect(foodType)" class="foodType-card">
+      <h2>{{ foodType.foodTypeName }}</h2>
+      <img src="assets/images/foodType.jpeg" alt="{{ foodType.foodTypeName }}" class="foodType-image">
+  
+      <!-- Buttons for update and delete -->
+      <div class="recipe-buttons">
+        <!-- Button to update -->
+        <button>Update</button>
+        <!-- <button (click)="startUpdate(recipe)">Update</button> -->
+  
+        <!-- Button to delete -->
+        <button>Delete</button>
+        <!-- <button (click)="deleteRecipe(recipe.recipeId)">Delete</button> -->
+      </div>
+    </div>
+  </div>
