@@ -27,7 +27,7 @@ export class FoodTypeService {
   }
 
   deleteFoodType(foodTypeId: number | null): Observable<FoodType> {
-    const url = `${this.apiUrl}/foodType/delete/${foodTypeId}`;
+    const url = `${this.apiUrl}/foodtype/delete/${foodTypeId}`;
     return this.http.delete<FoodType>(url);
   }
 }

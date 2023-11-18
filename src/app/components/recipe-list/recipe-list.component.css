@@ -16,3 +16,44 @@
     width: auto; /* Let the width scale proportionally */
 
   }
+  .update-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .update-popup h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .update-popup label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .update-popup input,
+  .update-popup textarea {
+    width: 90%;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .update-popup button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .update-popup button.cancel {
+    background-color: #ccc;
+    margin-left: 10px;
+  }

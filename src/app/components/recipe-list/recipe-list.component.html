@@ -5,17 +5,27 @@
     <img src="assets/images/cheese-burger.jpeg" alt="{{ recipe.recipeName }}" class="recipe-image">
     <p>Calories:<br> {{ recipe.calories }}</p>
     <p>Description:<br> {{ recipe.description }}</p>
-    <!-- <app-recipe-list [data]="selectedFoodType"></app-recipe-list> -->
+    <p>Food Type: {{recipe.foodTypeName}}</p>
 
-    <!-- Buttons for update and delete -->
     <div class="recipe-buttons">
       <!-- Button to update -->
-      <button>Update</button>
-      <!-- <button (click)="startUpdate(recipe)">Update</button> -->
+      <button (click)="openUpdatePopup(recipe)">Update</button>
 
       <!-- Button to delete -->
-      <button>Delete</button>
-      <!-- <button (click)="deleteRecipe(recipe.recipeId)">Delete</button> -->
+      <button (click)="deleteRecipe(recipe.recipeId)">Delete</button>
     </div>
   </div>
+</div>
+
+<!-- Update Popup -->
+<div *ngIf="isUpdatePopupOpen" class="update-popup">
+  <h2>Update Recipe</h2>
+  <label>Name:</label>
+  <input type="text" [(ngModel)]="updatedRecipe.recipeName" />
+  <label>Calories:</label>
+  <input type="number" [(ngModel)]="updatedRecipe.calories" />
+  <label>Description:</label>
+  <textarea [(ngModel)]="updatedRecipe.description"></textarea>
+  <button (click)="updateRecipe(updatedRecipe)">Save</button>
+  <button (click)="closeUpdatePopup()">Cancel</button>
 </div>

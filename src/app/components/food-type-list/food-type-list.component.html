@@ -5,11 +5,9 @@
       <img src="assets/images/foodType.jpeg" alt="{{ foodType.foodTypeName }}" class="foodType-image">
       <!-- <app-recipe-list [data]="selectedFoodType"></app-recipe-list> -->
 
-      <!-- Buttons for update and delete -->
       <div class="recipe-buttons">
         <!-- Button to update -->
-        <button>Update</button>
-        <!-- <button (click)="startUpdate(recipe)">Update</button> -->
+        <button (click)="updateFoodType()">Update</button>
   
         <!-- Button to delete -->
         <button (click)="deleteFoodType(foodType.foodTypeId)">Delete</button>
