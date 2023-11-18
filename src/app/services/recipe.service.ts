@@ -39,5 +39,14 @@ export class RecipeService {
     return this.http.post(`${this.apiUrl}/recipes/new`, recipeData);
   }
 
+  updateRecipe(recipeId: number | null, updatedRecipe: any): Observable<any> {
+    const url = `${this.apiUrl}/recipes/update/${recipeId}`;
+    return this.http.put(url, updatedRecipe);
+  }
+
+  deleteRecipe(recipeId: number | null): Observable<any> {
+    const url = `${this.apiUrl}/recipes/delete/${recipeId}`;
+    return this.http.delete(url);
+  }
   
 }

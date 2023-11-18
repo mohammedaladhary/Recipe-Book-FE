@@ -1,1 +1,17 @@
-<p>signup works!</p>
+<div class="gn-container">
+<div class="signup">
+    <h1>Sign Up</h1>
+  
+    <form (ngSubmit)="signup()" [formGroup]="registerForm">
+        <label>Name:</label>
+        <input type="text" placeholder="Name..." formControlName="name" />
+        <label>Email:</label>
+        <input type="email" placeholder="Email..." formControlName="email" />
+        <label>Password:</label>
+        <input type="password" placeholder="Password..." formControlName="password" />
+        <button type="submit" [disabled]="registerForm.invalid">Sign Up</button>
+    </form>
+  
+    <p>Already have an account? <a [routerLink]="['/signin']">Login</a></p>
+  </div>
+</div>

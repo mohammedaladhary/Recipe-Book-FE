@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { Router } from '@angular/router';
+import { FoodType } from 'src/app/models/FoodType.model';
 
 
 @Component({
@@ -11,7 +12,10 @@ import { Router } from '@angular/router';
 export class RecipeListComponent implements OnInit{
   recipes!: any[];
   selectedRecipe: any;
-
+  
+  // Use @Input decorator to receive data from parent component
+  @Input() data: any;
+  
   constructor(private recipeService: RecipeService, private router: Router) {}
     
   ngOnInit(): void {

@@ -44,7 +44,7 @@ body {
   }
   
   .login {
-    background-color: #94a7c8;
+    background-color: #b6c7bd;
   }
   
   .add-project,
@@ -107,3 +107,12 @@ body {
   }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.gn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust the height as needed */
+  background-image: url('src/assets/images/recipeBook.jpeg');
+  background-size: cover;
+}
