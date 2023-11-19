@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
+import { RecipeListComponent } from './components/recipe/recipe-list/recipe-list.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { AddRecipeComponent } from './components/add-recipe/add-recipe.component';
-import { AddFoodtypeComponent } from './components/add-foodtype/add-foodtype.component';
-import { FoodTypeListComponent } from './components/food-type-list/food-type-list.component';
+import { AddRecipeComponent } from './components/recipe/add-recipe/add-recipe.component';
+import { AddFoodtypeComponent } from './components/food-type/add-foodtype/add-foodtype.component';
+import { FoodTypeListComponent } from './components/food-type/food-type-list/food-type-list.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { SigninComponent } from './components/auth/signin/signin.component';
 import { AuthGuardService } from './services/auth-guard.service';
-import { RecipeDetailComponent } from './components/recipe-detail/recipe-detail.component';
+import { RecipeDetailComponent } from './components/recipe/recipe-detail/recipe-detail.component';
 
 const routes: Routes = [
   {
