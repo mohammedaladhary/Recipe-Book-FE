@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { Recipe } from '../models/Recipe.model';
 
 
 @Injectable({
@@ -12,32 +13,19 @@ export class RecipeService {
 
   constructor(private authService: AuthService,private http: HttpClient) {}
 
-  getAllRecipes(): Observable<any[]> {
+  getAllRecipes(): Observable<any> {
     const url = `${this.apiUrl}/recipes`;
     return this.http.get<any[]>(url);
   }
 
+  getRecipeById(recipeId: number): Observable<Recipe> {
+    const url = `${this.apiUrl}/recipes/${recipeId}`;
+    return this.http.get<Recipe>(url);
+  }  
+
   addRecipe(newRecipe: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/recipes/new`, newRecipe)
   }
-  // addRecipe(recipeData: any): Observable<any> {
-  //   // Get the current user's information
-  //   const currentUser = this.authService.getCurrentUser();
-  
-  //   // Set the userId and foodTypeId in the recipeData
-  //   recipeData.user = {
-  //     userId: currentUser.userId,
-  //     // Other user properties...
-  //   };
-  //   recipeData.foodType = {
-  //     foodTypeId: 1, // Set the appropriate foodTypeId
-  //     foodTypeName: recipeData.foodTypeName, // Use the entered foodTypeName
-  //     recipes: [], // Initialize with an empty array
-  //   };
-  
-  //   // Now, send the request to create the recipe
-  //   return this.http.post(`${this.apiUrl}/recipes/new`, recipeData);
-  // }
 
   updateRecipe(recipeId: number | null, updatedRecipe: any): Observable<any> {
     const url = `${this.apiUrl}/recipes/update/${recipeId}`;
@@ -48,5 +36,4 @@ export class RecipeService {
     const url = `${this.apiUrl}/recipes/delete/${recipeId}`;
     return this.http.delete(url);
   }
-  
 }

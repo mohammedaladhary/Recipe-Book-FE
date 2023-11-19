@@ -4,10 +4,10 @@
   
       <form (ngSubmit)="signin()" [formGroup]="loginForm">
 
-          <label>Username:</label>
+          <label>Username</label>
           <input type="text" placeholder="Username..." formControlName="name" />
 
-          <label>Password:</label>
+          <label>Password</label>
           <input type="password" placeholder="Password..." formControlName="password" />
           
           <p class="error-msg">{{externalErrorMsg}}</p>

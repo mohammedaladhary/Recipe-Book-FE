@@ -1,0 +1,59 @@
+.centered-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .recipe-card {
+    margin: 10px; /* Adjust margin as needed */
+    padding: 10px; /* Adjust padding as needed */
+    border: 1px solid #ccc; /* Add border for separation if desired */
+    border-radius: 8px; /* Add border-radius for rounded corners if desired */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add box-shadow for a subtle lift */
+  }
+  .recipe-image {
+    height: 250px; /* Adjust the height as needed */
+    width: auto; /* Let the width scale proportionally */
+
+  }
+  .update-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .update-popup h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .update-popup label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .update-popup input,
+  .update-popup textarea {
+    width: 90%;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .update-popup button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .update-popup button.cancel {
+    background-color: #ccc;
+    margin-left: 10px;
+  }

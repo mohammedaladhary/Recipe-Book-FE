@@ -1,91 +1,31 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component} from '@angular/core';
+import { Recipe } from 'src/app/models/Recipe.model';
 import { RecipeService } from 'src/app/services/recipe.service';
-import { Router } from '@angular/router';
-import { FoodTypeService } from 'src/app/services/food-type.service';
+
 
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.css']
 })
-export class RecipeListComponent implements OnInit {
-  recipes!: any[];
-  // foodType!: string[] | undefined;
-  selectedRecipe: any;
-  isUpdatePopupOpen: boolean = false;
-  updatedRecipe: any = {};
+export class RecipeListComponent {
+  recipes: Recipe[] = [];
 
-  // Use @Input decorator to receive data from parent component
-  @Input() data: any;
-
-  constructor(private recipeService: RecipeService,private foodType: FoodTypeService, private router: Router) {}
-  openUpdatePopup(recipe: any): void {
-    this.isUpdatePopupOpen = true;
-    this.updatedRecipe = { ...recipe };
-  }
-
-  closeUpdatePopup(): void {
-    this.isUpdatePopupOpen = false;
-  }
-
+  constructor(private recipeService: RecipeService) {}
+  
   ngOnInit(): void {
-    this.loadRecipes();
+    this.getAllRecipes()
   }
 
-  loadRecipes(): void {
-    this.recipeService.getAllRecipes().subscribe(
-      (data) => {
-        this.recipes = data;
-        console.log('Recipes data:', this.recipes);
+  getAllRecipes(): void {
+    this.recipeService.getAllRecipes().subscribe({
+      next: (recipe) =>{
+        this.recipes = recipe;
       },
+      error: 
       (error) => {
-        console.error('Error fetching recipes:', error);
+        console.log(error);
       }
-    );
+  })
   }
-
-  onSelect(recipe: any): void {
-    this.selectedRecipe = recipe;
-    this.router.navigate(['/recipes', recipe._recipeId]);
-  }
-
-  deleteRecipe(recipeId: number | null): void {
-    // Call the deleteRecipe method from RecipeService
-    this.recipeService.deleteRecipe(recipeId).subscribe({
-      next: (response) => {
-        console.log('Recipe deleted successfully:', response);
-
-        // Update the recipes array without the deleted recipe
-        this.recipes = this.recipes.filter((recipe) => recipe.recipeId !== recipeId);
-      },
-      error: (error) => {
-        console.error('Error deleting recipe:', error);
-      },
-      complete: () => {
-        console.log('Delete recipe operation completed');
-      }
-    });
-  }
-
-  updateRecipe(updatedRecipe: any): void {
-    this.recipeService.updateRecipe(updatedRecipe.recipeId, updatedRecipe).subscribe({
-      next: (response) => {
-        console.log('Recipe updated successfully:', response);
-  
-        // Update the recipes array with the updated recipe
-        this.recipes = this.recipes.map((recipe) =>
-          recipe.recipeId === updatedRecipe.recipeId ? updatedRecipe : recipe
-        );
-  
-        // Close the update popup
-        this.closeUpdatePopup();
-      },
-      error: (error) => {
-        console.error('Error updating recipe:', error);
-      },
-      complete: () => {
-        console.log('Update recipe operation completed');
-      }
-    });
-  }  
 }

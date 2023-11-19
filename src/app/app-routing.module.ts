@@ -9,6 +9,7 @@ import { FoodTypeListComponent } from './components/food-type-list/food-type-lis
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { SigninComponent } from './components/auth/signin/signin.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { RecipeDetailComponent } from './components/recipe-detail/recipe-detail.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,11 @@ const routes: Routes = [
     path: 'recipes',
     // canActivate: [AuthGuardService],
     component: RecipeListComponent
+  },
+  {
+    path: 'recipes/:recipeId',
+    // canActivate: [AuthGuardService],
+    component: RecipeDetailComponent
   },
   {
     path: '**',

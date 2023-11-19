@@ -1,1 +1,31 @@
-<p>recipe-detail works!</p>
+<app-nav-bar></app-nav-bar>
+<div class="centered-column">
+<div *ngFor="let recipe of recipeDetails" class="recipe-card">
+    <h2>Name:<br> {{ recipe.recipeName }}</h2>
+    <img src="assets/images/cheese-burger.jpeg" alt="{{ recipe.recipeName }}" class="recipe-image">
+    <p>Calories:<br> {{ recipe.calories }}</p>
+    <p>Description:<br> {{ recipe.description }}</p>
+    <!-- <p>Food Type: {{recipe.foodTypeName}}</p> -->
+
+    <div class="recipe-buttons">
+      <!-- Button to update -->
+      <button (click)="openUpdatePopup(recipe)">Update</button>
+
+      <!-- Button to delete -->
+      <button (click)="deleteRecipe(recipe.recipeId)">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- Update Popup -->
+<div *ngIf="isUpdatePopupOpen" class="update-popup">
+  <h2>Update Recipe</h2>
+  <label>Name:</label>
+  <input type="text" [(ngModel)]="updatedRecipe.recipeName" />
+  <label>Calories:</label>
+  <input type="number" [(ngModel)]="updatedRecipe.calories" />
+  <label>Description:</label>
+  <textarea [(ngModel)]="updatedRecipe.description"></textarea>
+  <button (click)="updateRecipe(updatedRecipe)">Save</button>
+  <button (click)="closeUpdatePopup()">Cancel</button>
+</div>
