@@ -12,6 +12,10 @@ import { SigninComponent } from './components/signin/signin.component';
 const routes: Routes = [
   {
     path: '',
+    component: SigninComponent
+  },
+  {
+    path: 'home',
     // canActivate: [AuthGuardService],
     component: HomeComponent
   },
@@ -20,8 +24,12 @@ const routes: Routes = [
     component: SigninComponent
   },
   {
-    path: 'signout',
+    path: 'signup',
     component: SignupComponent
+  },
+  {
+    path: 'signout',
+    component: SigninComponent
   },
   {
     path: 'add-foodType',

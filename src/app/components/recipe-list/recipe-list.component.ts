@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { Router } from '@angular/router';
+import { FoodTypeService } from 'src/app/services/food-type.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RecipeListComponent implements OnInit {
   recipes!: any[];
+  // foodType!: string[] | undefined;
   selectedRecipe: any;
   isUpdatePopupOpen: boolean = false;
   updatedRecipe: any = {};
@@ -16,7 +18,7 @@ export class RecipeListComponent implements OnInit {
   // Use @Input decorator to receive data from parent component
   @Input() data: any;
 
-  constructor(private recipeService: RecipeService, private router: Router) {}
+  constructor(private recipeService: RecipeService,private foodType: FoodTypeService, private router: Router) {}
   openUpdatePopup(recipe: any): void {
     this.isUpdatePopupOpen = true;
     this.updatedRecipe = { ...recipe };

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RecipeService } from 'src/app/services/recipe.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class AddRecipeComponent {
   descriptionInput: FormControl;
   foodTypeNameInput: FormControl;
 
-  constructor(private recipeService: RecipeService) {
+  constructor(private recipeService: RecipeService, router:Router) {
     this.recipeNameInput = new FormControl("", Validators.required);
     this.caloriesInput = new FormControl("", Validators.required);
     this.descriptionInput = new FormControl("", Validators.required);
@@ -42,6 +43,7 @@ export class AddRecipeComponent {
         this.message = 'Recipe created successfully';
         this.messageColor = 'green';
         this.recipeForm.reset(); // Reset the form after successful creation
+        // this.router.navigate(['/recipes']);
       },
       error: (error) => {
         console.error('Error creating recipe:', error);

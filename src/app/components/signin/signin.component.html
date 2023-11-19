@@ -7,11 +7,12 @@
           <input type="email" placeholder="Email..." formControlName="email" />
           <label>Password:</label>
           <input type="password" placeholder="Password..." formControlName="password" />
-          <button type="submit" [disabled]="loginForm.invalid">Login</button>
+          <!-- <button type="submit" [disabled]="loginForm.invalid">Login</button> -->
+          <button type="submit" routerLink="home">Login</button>
       </form>
       <p class="error-msg">{{externalErrorMsg}}</p>
   
-      <p>Don't have an account? <a [routerLink]="['']">Create new account</a></p>
+      <p>Don't have an account? <a [routerLink]="['signup']">Create new account</a></p>
     </div>
   </div>
   
