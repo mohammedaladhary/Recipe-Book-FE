@@ -7,8 +7,8 @@ import { RecipeListComponent } from './components/recipe-list/recipe-list.compon
 import { RecipeDetailComponent } from './components/recipe-detail/recipe-detail.component';
 import { AddRecipeComponent } from './components/add-recipe/add-recipe.component';
 import { HomeComponent } from './components/home/home.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { SigninComponent } from './components/signin/signin.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { SigninComponent } from './components/auth/signin/signin.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';

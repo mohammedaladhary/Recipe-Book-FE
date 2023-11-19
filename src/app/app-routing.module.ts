@@ -6,8 +6,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { AddRecipeComponent } from './components/add-recipe/add-recipe.component';
 import { AddFoodtypeComponent } from './components/add-foodtype/add-foodtype.component';
 import { FoodTypeListComponent } from './components/food-type-list/food-type-list.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { SigninComponent } from './components/signin/signin.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { SigninComponent } from './components/auth/signin/signin.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -53,7 +54,6 @@ const routes: Routes = [
   },
   {
     path: '**',
-    // canActivate: [AuthGuardService],
     component: PageNotFoundComponent
   }
 ];

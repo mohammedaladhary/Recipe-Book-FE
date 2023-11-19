@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User.model';
@@ -9,32 +9,25 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css']
 })
-export class SigninComponent implements OnInit{
+export class SigninComponent{
   loginForm: FormGroup;
-  emailInput: FormControl;
+  nameInput: FormControl;
   passwordInput: FormControl;
-
   externalErrorMsg: string;
 
-  constructor(
-    private router: Router,
-    private authService: AuthService
-  ) {
-    this.emailInput = new FormControl('', [Validators.required, Validators.email]);
+  constructor(private router: Router,private authService: AuthService) {
+    this.nameInput = new FormControl('', [Validators.required, Validators.email]);
     this.passwordInput = new FormControl('', [Validators.required]);
     this.loginForm = new FormGroup({
-      email: this.emailInput,
+      name: this.nameInput,
       password: this.passwordInput,
-    });
+    })
     this.externalErrorMsg = '';
   }
 
-  ngOnInit(): void {
-  }
-
-  login() {
+  signin() {
     // Attempt to login
-    this.authService.signin(this.loginForm.value.email, this.loginForm.value.password).subscribe({
+    this.authService.signin(this.loginForm.value.name, this.loginForm.value.password).subscribe({
       next: (response) => {
         console.log('Login successful');
 
@@ -46,28 +39,19 @@ export class SigninComponent implements OnInit{
         this.authService.authenticate().subscribe({
           next: (userData: User) => {
             // Store user data in local storage
-            
             localStorage.setItem('currentUser', JSON.stringify(userData));
-            this.authService.currentUserSubject.next(userData);
 
             // Redirect to home page
-            this.router.navigate(['/']);
-
-          },
-          error: error => {
-            this.externalErrorMsg = 'Internal error please try again later';
+            this.router.navigate(['/home'])
           }
-
-        }
-        );
+        })
       },
-      error: error => {
+      error: (error) => {
         console.log(error, error.status)
         if(error.status === 403) {
           this.externalErrorMsg = 'Wrong username/password';
         }
       }
-    });
+    })
   }
-
 }
