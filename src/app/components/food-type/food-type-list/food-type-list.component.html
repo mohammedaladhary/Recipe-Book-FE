@@ -4,9 +4,9 @@
   <div *ngFor="let foodType of foodTypes" class="foodType-card">
     <h2>Food Type:</h2>
     <!-- Use routerLink to navigate to the detail page -->
-    <p><a [routerLink]="['/foodtypes', foodType.foodTypeId]">
+    <a [routerLink]="['/foodtypes', foodType.foodTypeId]">
       <img src="assets/images/foodType.jpeg" alt="{{ foodType.foodTypeName }}" class="foodType-image">
       <p>{{ foodType.foodTypeName }}</p>
-    </a></p>
+    </a>
   </div>
 </div>

@@ -15,11 +15,12 @@ import { FoodTypeDetailComponent } from './components/food-type/food-type-detail
 const routes: Routes = [
   {
     path: '',
+    canActivate: [AuthGuardService],
     component: SigninComponent
   },
   {
     path: 'home',
-    // canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
     component: HomeComponent
   },
   {
@@ -36,31 +37,32 @@ const routes: Routes = [
   },
   {
     path: 'add-foodType',
-    // canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
     component: AddFoodtypeComponent
   },
   {
     path: 'foodType',
-    // canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
     component: FoodTypeListComponent
   },
   {
     path: 'foodtypes/:foodTypeId',
+    canActivate: [AuthGuardService],
     component: FoodTypeDetailComponent
   },
   {
     path: 'add-recipe',
-    // canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
     component: AddRecipeComponent
   },
   {
     path: 'recipes',
-    // canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
     component: RecipeListComponent
   },
   {
     path: 'recipes/:recipeId',
-    // canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
     component: RecipeDetailComponent
   },
   {

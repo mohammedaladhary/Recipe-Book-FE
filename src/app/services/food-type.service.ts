@@ -18,11 +18,20 @@ export class FoodTypeService {
     return this.http.get<any[]>(url);
   }
 
+  // getRecipesByFoodTypeId(foodTypeId: number): Observable<Recipe[]> {
+  //   const url = `${this.apiUrl}/foodtype/${foodTypeId}/recipes`;
+  //   return this.http.get<Recipe[]>(url);
+  // }
+  getFoodTypeById(foodTypeId: number): Observable<FoodType> {
+    const url = `${this.apiUrl}/foodtype/${foodTypeId}`;
+    return this.http.get<FoodType>(url);
+  }
+  
   getRecipesByFoodTypeId(foodTypeId: number): Observable<Recipe[]> {
     const url = `${this.apiUrl}/foodtype/${foodTypeId}/recipes`;
     return this.http.get<Recipe[]>(url);
   }
-
+  
   addFoodType(newFoodType: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/foodtype/new`, newFoodType)
   }

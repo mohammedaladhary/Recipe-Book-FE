@@ -1,18 +1,23 @@
 <app-nav-bar></app-nav-bar>
 <div class="centered-column">
   <h2>Food Type Details</h2>
-  <div class="foodType-card">
-    <p>Name: {{ selectedFoodType?.foodTypeName }}</p>
-    <img src="assets/images/foodType.jpeg" alt="{{ selectedFoodType?.foodTypeName }}" class="foodType-image">
-    <div class="recipe-buttons">
-      <button (click)="updateFoodType()">Update</button>
-      <button (click)="deleteFoodType()">Delete</button>
+
+  <div *ngFor="let foodType of foodTypeDetails">
+    <div class="foodType-card">
+      <h2>Name:</h2>
+      <p>{{ foodType.foodTypeName }}</p>
+
+      <div class="recipe-buttons">
+        <button (click)="updateFoodType()">Update</button>
+        <button (click)="deleteFoodType()">Delete</button>
+      </div>
+      <br>
     </div>
-    <br>
   </div>
+
   <h3>Recipes:</h3>
   <div *ngFor="let recipe of recipes" class="recipe-card">
-    <img src="assets/images/cheese-burger.jpeg" alt="{{ recipe.recipeName }}" class="recipe-image">
+    <img src="assets/images/recipe.png" alt="{{ recipe.recipeName }}" class="recipe-image">
     <p>{{ recipe.recipeName }}</p>
   </div>
 </div>

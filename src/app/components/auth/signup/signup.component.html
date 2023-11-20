@@ -6,15 +6,15 @@
         <form (ngSubmit)="signup()" [formGroup]="registerForm">
 
             <label>Name:</label>
-            <input type="text" placeholder="Username" formControlName="name" />
+            <input type="text" placeholder="name" formControlName="name" />
             <p *ngIf="nameInput.invalid && nameInput.touched">Name must be more then 3 characters</p>
 
             <label>Password:</label>
-            <input type="password" placeholder="Password..." formControlName="password" />
+            <input type="password" placeholder="password" formControlName="password" />
             <p *ngIf="passwordInput.invalid && passwordInput.touched">password must be more then 7 characters</p>
 
             <label>Email:</label>
-            <input type="email" placeholder="Email..." formControlName="email" />
+            <input type="email" placeholder="email" formControlName="email" />
             <p *ngIf="emailInput.invalid && emailInput.touched">email must be in email format</p>
 
             <button type="submit" [disabled]="registerForm.invalid">Sign Up</button>

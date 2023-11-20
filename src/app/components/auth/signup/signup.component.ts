@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User.model';
@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit{
 
   nameInput: FormControl;
   passwordInput: FormControl;
@@ -29,6 +29,8 @@ export class SignupComponent {
       email: this.emailInput
     });
   }
+  ngOnInit(): void {
+  }
 
   signup() {
     this.authService.signup(
@@ -37,7 +39,7 @@ export class SignupComponent {
       this.registerForm.value.email
       ).subscribe({
       next: (user: User) => {
-        console.log("created",[user]);
+        console.log(user);
 
         // Redirect to login page
         this.router.navigate(['/signin']);
@@ -45,7 +47,7 @@ export class SignupComponent {
       error: (error) => {
         console.log(error);
       }
-    })
+    });
     this.router.navigate([''])
   }
 }

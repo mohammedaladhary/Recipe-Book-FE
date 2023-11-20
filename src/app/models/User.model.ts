@@ -1,6 +1,6 @@
 export class User {
     constructor(
-        private _userId: number,
+        private _userId: number | null,
         private _name: string,
         private _password: string,
         private _email: string,
@@ -23,10 +23,10 @@ export class User {
     public set name(value: string) {
         this._name = value;
     }
-    public get userId(): number {
+    public get userId(): number | null{
         return this._userId;
     }
-    public set userId(value: number) {
+    public set userId(value: number | null) {
         this._userId = value;
     }
 }

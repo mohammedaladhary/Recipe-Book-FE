@@ -2,8 +2,10 @@
 <div class="centered-column">
   <button routerLink="/add-recipe">Add Recipe</button>
   <div *ngFor="let recipe of recipes" class="recipe-card">
+    <h2>Recipes:</h2>
+    <!-- Use routerLink to navigate to the detail page -->
     <a [routerLink]="['/recipes', recipe.recipeId]">
-      <img src="assets/images/cheese-burger.jpeg" alt="{{ recipe.recipeName }}" class="recipe-image">
+      <img src="assets/images/recipe.png" alt="{{ recipe.recipeName }}" class="recipe-image">
       <p>{{ recipe.recipeName }}</p>
     </a>
   </div>

@@ -36,13 +36,21 @@ export class AuthService {
 
   //signup method
   signup( name: string, password: string, email: string ): Observable<User> {
-    const user: User = new User(0,name,password,email)
+    const user: User = new User(
+      null,
+      name,
+      password,
+      email
+      );
     return this.http.post<User>(`${this.apiUrl}/signup`, user);
   }
 
   //signin method
   signin( name: string, password: string ): Observable<any> {
-    const body = {name, password}
+    const body = {
+      name,
+      password
+    };
     return this.http.post<any>(`${this.apiUrl}/signin`, body);
   }
 
