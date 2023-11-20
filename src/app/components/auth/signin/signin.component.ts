@@ -10,14 +10,14 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent{
-  loginForm: FormGroup;
   nameInput: FormControl;
   passwordInput: FormControl;
+  loginForm: FormGroup;
   externalErrorMsg: string;
 
-  constructor(private router: Router,private authService: AuthService) {
-    this.nameInput = new FormControl('', [Validators.required, Validators.email]);
-    this.passwordInput = new FormControl('', [Validators.required]);
+  constructor(private authService: AuthService,private router: Router) {
+    this.nameInput = new FormControl("",[Validators.required, Validators.minLength(5)]);
+    this.passwordInput = new FormControl("",[Validators.required, Validators.minLength(7)]);
     this.loginForm = new FormGroup({
       name: this.nameInput,
       password: this.passwordInput,
@@ -27,13 +27,16 @@ export class SigninComponent{
 
   signin() {
     // Attempt to login
-    this.authService.signin(this.loginForm.value.name, this.loginForm.value.password).subscribe({
+    this.authService.signin(
+      this.loginForm.value.name,
+      this.loginForm.value.password)
+      .subscribe({
       next: (response) => {
         console.log('Login successful');
 
         // Store user in local storage to keep user logged in between page refreshes
-        localStorage.removeItem('authToken');
-        localStorage.setItem('authToken', response.authToken);
+        localStorage.removeItem("Token");
+        localStorage.setItem("Token", response.token);
 
         // Load user data
         this.authService.authenticate().subscribe({

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FoodType } from 'src/app/models/FoodType.model';
+import { FoodTypeService } from 'src/app/services/food-type.service';
 import { RecipeService } from 'src/app/services/recipe.service';
 
 @Component({
@@ -8,11 +9,12 @@ import { RecipeService } from 'src/app/services/recipe.service';
   templateUrl: './add-recipe.component.html',
   styleUrls: ['./add-recipe.component.css']
 })
-export class AddRecipeComponent {
+export class AddRecipeComponent implements OnInit {
   newRecipe: any = [];
   recipeCreated: boolean = false;
   message: string = '';
   messageColor: string = '';
+  foodType: FoodType[] = []; // Store the list of food types
 
   // Corrected the assignment here
   recipeForm: FormGroup;
@@ -21,7 +23,7 @@ export class AddRecipeComponent {
   descriptionInput: FormControl;
   foodTypeNameInput: FormControl;
 
-  constructor(private recipeService: RecipeService, router:Router) {
+  constructor(private foodTypeService: FoodTypeService, private recipeService: RecipeService) {
     this.recipeNameInput = new FormControl("", Validators.required);
     this.caloriesInput = new FormControl("", Validators.required);
     this.descriptionInput = new FormControl("", Validators.required);
@@ -33,6 +35,10 @@ export class AddRecipeComponent {
       description: this.descriptionInput,
       foodTypeName: this.foodTypeNameInput
     });
+  }
+
+  ngOnInit(): void {
+    this.loadFoodTypes();
   }
 
   createRecipe(): void {
@@ -52,6 +58,18 @@ export class AddRecipeComponent {
       },
       complete: () => {
         console.log('Create recipe operation completed');
+      }
+    });
+  }
+
+  loadFoodTypes(): void {
+    this.foodTypeService.getAllFoodType().subscribe({
+      next: (response) => {
+        this.foodType = response;
+        console.log('FoodTypes data:', this.foodType);
+      },
+      error: (error) => {
+        console.error('Error fetching food types:', error);
       }
     });
   }

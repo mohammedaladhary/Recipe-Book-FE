@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FoodType } from '../models/FoodType.model';
+import { Recipe } from '../models/Recipe.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,11 @@ export class FoodTypeService {
   getAllFoodType(): Observable<any[]> {
     const url = `${this.apiUrl}/foodtype`;
     return this.http.get<any[]>(url);
+  }
+
+  getRecipesByFoodTypeId(foodTypeId: number): Observable<Recipe[]> {
+    const url = `${this.apiUrl}/foodtype/${foodTypeId}/recipes`;
+    return this.http.get<Recipe[]>(url);
   }
 
   addFoodType(newFoodType: any): Observable<any> {

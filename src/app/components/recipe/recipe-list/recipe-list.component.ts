@@ -17,7 +17,7 @@ export class RecipeListComponent {
     this.getAllRecipes()
   }
 
-  getAllRecipes(): void {
+  getAllRecipes(){
     this.recipeService.getAllRecipes().subscribe({
       next: (recipe) =>{
         this.recipes = recipe;

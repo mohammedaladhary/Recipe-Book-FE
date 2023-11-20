@@ -1,14 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/User.model';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
   private readonly apiUrl = 'http://localhost:5005/auth';
-  
   constructor(private http: HttpClient) { }
 
   isAuthenticatied(): boolean {
@@ -18,7 +18,7 @@ export class AuthService {
   
   authenticate(): Observable<User> {
     // Get the token from the local storage
-    const storedToken: string | null = localStorage.getItem('authToken');
+    const storedToken: string | null = localStorage.getItem("Token");
 
     if (storedToken === null) {
       throw null;
@@ -34,30 +34,20 @@ export class AuthService {
     return this.http.get<User>(`${this.apiUrl}/verify`, options);
   }
 
-  signup(name: string, email: string, password: string): Observable<User> {
-    const user: User = new User(
-      null,
-      name,
-      email,
-      password,
-    );
-    // Register a new user
+  //signup method
+  signup( name: string, password: string, email: string ): Observable<User> {
+    const user: User = new User(0,name,password,email)
     return this.http.post<User>(`${this.apiUrl}/signup`, user);
-
   }
 
-  signin(name: string, password: string): Observable<any> {
-
-    const body = {
-      name,
-      password
-    };
-    // Check credentials in the server
-    return this.http.post<any>(`${this.apiUrl}/login`, body);
+  //signin method
+  signin( name: string, password: string ): Observable<any> {
+    const body = {name, password}
+    return this.http.post<any>(`${this.apiUrl}/signin`, body);
   }
 
   logout(){
-    localStorage.removeItem('authToken')
-    localStorage.removeItem('currentUser')
+    localStorage.removeItem("Token")
+    localStorage.removeItem("Token")
   }
 }

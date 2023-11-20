@@ -3,18 +3,17 @@
       <h1>R E C I P E B O O K</h1>
   
       <form (ngSubmit)="signin()" [formGroup]="loginForm">
-
           <label>Username</label>
-          <input type="text" placeholder="Username..." formControlName="name" />
+          <input type="text" name="name" formControlName="name" />
 
           <label>Password</label>
-          <input type="password" placeholder="Password..." formControlName="password" />
+          <input type="password" name="password" formControlName="password" />
           
           <p class="error-msg">{{externalErrorMsg}}</p>
-          <button type="submit" routerLink="home">Login</button>
+          <button type="submit">Login</button>
       </form>
-  
       <p>Don't have an account? <a [routerLink]="['signup']">Create new account</a></p>
     </div>
-  </div>
+
+</div>
   

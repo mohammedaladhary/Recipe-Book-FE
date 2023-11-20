@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from "@angular/material/input";
 import { FoodTypeListComponent } from './components/food-type/food-type-list/food-type-list.component';
+import { FoodTypeDetailComponent } from './components/food-type/food-type-detail/food-type-detail.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { FoodTypeListComponent } from './components/food-type/food-type-list/foo
     AddFoodtypeComponent,
     PageNotFoundComponent,
     FoodTypeListComponent,
+    FoodTypeDetailComponent,
   ],
   imports: [
     BrowserModule,
