@@ -1,0 +1,18 @@
+.centered-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .foodType-card {
+    margin: 10px; /* Adjust margin as needed */
+    padding: 10px; /* Adjust padding as needed */
+    border: 1px solid #ccc; /* Add border for separation if desired */
+    border-radius: 8px; /* Add border-radius for rounded corners if desired */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add box-shadow for a subtle lift */
+  }
+  .foodType-image {
+    height: 250px; /* Adjust the height as needed */
+    width: auto; /* Let the width scale proportionally */
+
+  }
