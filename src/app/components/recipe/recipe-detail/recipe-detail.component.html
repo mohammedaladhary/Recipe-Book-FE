@@ -1,12 +1,10 @@
 <app-nav-bar></app-nav-bar>
 <div class="centered-column">
-  <h2>Recipe Details</h2>
 <div *ngFor="let recipe of recipeDetails" class="recipe-card">
+  <h2>Recipe Details</h2>
     <h2>Name:</h2><p>{{ recipe.recipeName }}</p>
-    <!-- <img src="assets/images/cheese-burger.jpeg" alt="{{ recipe.recipeName }}" class="recipe-image"> -->
     <h2>Calories:</h2> <p>{{ recipe.calories }}</p>
     <h2>Description:</h2> <p>{{ recipe.description }}</p>
-    <!-- <p>Food Type: {{recipe.foodType.foodTypeId}}</p> -->
 
     <div class="recipe-buttons">
       <!-- Button to update -->

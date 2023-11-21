@@ -31,7 +31,7 @@ export class FoodTypeService {
     const url = `${this.apiUrl}/foodtype/${foodTypeId}/recipes`;
     return this.http.get<Recipe[]>(url);
   }
-  
+
   addFoodType(newFoodType: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/foodtype/new`, newFoodType)
   }

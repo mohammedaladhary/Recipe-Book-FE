@@ -1,5 +1,4 @@
 import { FoodType } from "./FoodType.model";
-import { User } from "./User.model";
 
 export class Recipe {
     constructor(
@@ -8,7 +7,6 @@ export class Recipe {
         private _calories: number,
         private _description: string,
         private _foodType: FoodType,
-        private _user: User,
         private _userId: number  // Add user_id property
     ) {}
     public get userId(): number {
@@ -16,12 +14,6 @@ export class Recipe {
     }
     public set userId(value: number) {
         this._userId = value;
-    }
-    public get user(): User {
-        return this._user;
-    }
-    public set user(value: User) {
-        this._user = value;
     }
     public get foodType(): FoodType {
         return this._foodType;
