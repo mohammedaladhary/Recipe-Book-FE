@@ -35,13 +35,7 @@ export class AuthService {
   }
 
   //signup method
-  signup( name: string, password: string, email: string ): Observable<User> {
-    const user: User = new User(
-      null,
-      name,
-      password,
-      email
-      );
+  signup(user: User): Observable<User>{
     return this.http.post<User>(`${this.apiUrl}/signup`, user);
   }
 

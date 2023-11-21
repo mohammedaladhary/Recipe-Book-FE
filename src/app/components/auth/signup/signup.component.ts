@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit{
+export class SignupComponent {
 
   nameInput: FormControl;
   passwordInput: FormControl;
@@ -29,25 +29,18 @@ export class SignupComponent implements OnInit{
       email: this.emailInput
     });
   }
-  ngOnInit(): void {
-  }
-
-  signup() {
-    this.authService.signup(
-      this.registerForm.value.name,
+  
+  signup(){
+    const user: User = new User(this.registerForm.value.name,
       this.registerForm.value.password,
-      this.registerForm.value.email
-      ).subscribe({
-      next: (user: User) => {
-        console.log(user);
-
-        // Redirect to login page
-        this.router.navigate(['/signin']);
-      },
-      error: (error) => {
-        console.log(error);
-      }
-    });
-    this.router.navigate([''])
+      this.registerForm.value.email,)
+      console.log(user);
+    this.authService.signup(user).subscribe({
+      next: (users: User)=>{
+      console.log("created", [users])
+    },
+      error: (err) => console.log(err)
+    })
+    this.router.navigate(["/"])
   }
 }
