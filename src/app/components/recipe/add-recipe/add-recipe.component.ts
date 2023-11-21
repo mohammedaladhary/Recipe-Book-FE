@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FoodType } from 'src/app/models/FoodType.model';
 import { FoodTypeService } from 'src/app/services/food-type.service';
 import { RecipeService } from 'src/app/services/recipe.service';
@@ -10,20 +11,20 @@ import { RecipeService } from 'src/app/services/recipe.service';
   styleUrls: ['./add-recipe.component.css']
 })
 export class AddRecipeComponent implements OnInit {
-  newRecipe: any = [];
+
+  newRecipe: any;
   recipeCreated: boolean = false;
   message: string = '';
   messageColor: string = '';
   foodType: FoodType[] = []; // Store the list of food types
 
-  // Corrected the assignment here
   recipeForm: FormGroup;
   recipeNameInput: FormControl;
   caloriesInput: FormControl;
   descriptionInput: FormControl;
   foodTypeNameInput: FormControl;
 
-  constructor(private foodTypeService: FoodTypeService, private recipeService: RecipeService) {
+  constructor(private foodTypeService: FoodTypeService, private recipeService: RecipeService, router: Router) {
     this.recipeNameInput = new FormControl("", Validators.required);
     this.caloriesInput = new FormControl("", Validators.required);
     this.descriptionInput = new FormControl("", Validators.required);
@@ -39,17 +40,30 @@ export class AddRecipeComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadFoodTypes();
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') ?? '{}');
+    const userId = currentUser?.userId;
+    console.log('UserId:', userId);
+
+    this.newRecipe = {
+      user: {
+        userId: userId,
+      },
+    }
   }
 
   createRecipe(): void {
-    const recipeData = this.recipeForm.value;
-    this.recipeService.addRecipe(recipeData).subscribe({
+    // Add recipe form values to newRecipe
+    this.newRecipe = {
+      ...this.newRecipe,
+      ...this.recipeForm.value
+    };
+
+    this.recipeService.addRecipe(this.newRecipe).subscribe({
       next: (response) => {
         console.log('New recipe created successfully:', response);
         this.message = 'Recipe created successfully';
         this.messageColor = 'green';
         this.recipeForm.reset(); // Reset the form after successful creation
-        // this.router.navigate(['/recipes']);
       },
       error: (error) => {
         console.error('Error creating recipe:', error);

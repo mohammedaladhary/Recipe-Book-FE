@@ -34,6 +34,7 @@ export class RecipeDetailComponent {
     this.recipeService.getRecipeById(recipeId).subscribe({
       next:(recipe)=>{
         this.recipeDetails = [recipe]
+        console.log(recipe)
     },
   })
 }

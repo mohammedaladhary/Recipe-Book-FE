@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -40,5 +40,16 @@ export class RecipeService {
   deleteRecipe(recipeId: number | null): Observable<any> {
     const url = `${this.apiUrl}/recipes/delete/${recipeId}`;
     return this.http.delete(url);
+  }
+
+  private getAuthHeader(): HttpHeaders {
+    // Get the token from the local storage
+    const token: string | null = localStorage.getItem('authToken');
+    if (token === null) {
+      throw null;
+    }
+    return new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
   }
 }

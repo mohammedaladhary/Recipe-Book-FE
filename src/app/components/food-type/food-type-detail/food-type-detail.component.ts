@@ -1,9 +1,8 @@
 // food-type-detail.component.ts
 
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FoodType } from 'src/app/models/FoodType.model';
-import { Recipe } from 'src/app/models/Recipe.model';
 import { FoodTypeService } from 'src/app/services/food-type.service';
 
 @Component({
@@ -36,18 +35,16 @@ export class FoodTypeDetailComponent implements OnInit {
     }
   }
 
-  // deleteFoodType(): void {
-  //   this.foodTypeService.deleteFoodType(this.foodTypeId).subscribe({
-  //     next: (response) => {
-  //       console.log('FoodType deleted successfully:', response);
-  //       // Emit an event to notify the parent about the deletion
-  //       this.recipesChange.emit([]);
-  //     },
-  //     error: (error) => {
-  //       console.log('Error deleting FoodType:', error);
-  //     }
-  //   });
-  // }
+  deleteFoodType(): void {
+    this.foodTypeService.deleteFoodType(this.foodType.foodTypeId).subscribe({
+      next: (response) => {
+        console.log('FoodType deleted successfully:', response);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
 
   // updateFoodType(): void {
   //   // Assuming you have a property called foodTypeName in your foodType object
