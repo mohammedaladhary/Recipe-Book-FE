@@ -43,11 +43,17 @@ export class AddRecipeComponent implements OnInit {
     const currentUser = JSON.parse(localStorage.getItem('currentUser') ?? '{}');
     const userId = currentUser?.userId;
     console.log('UserId:', userId);
+    const foodTypeId = this.foodTypeNameInput.value;
+    console.log('FoodTypeId:',foodTypeId)
+
 
     this.newRecipe = {
       user: {
         userId: userId,
       },
+      // foodType: {
+      //   foodTypeId: foodTypeId,
+      // }
     }
   }
 

@@ -11,18 +11,10 @@ import { RecipeService } from 'src/app/services/recipe.service';
 export class RecipeDetailComponent {
   recipeDetails: Recipe[] = [];
   recipeId: number = 0;
-  isUpdatePopupOpen: boolean = false;
+  isUpdating: boolean = false;
   updatedRecipe: any = {};
 
   constructor(private recipeService: RecipeService, private route: ActivatedRoute) {}
-  openUpdatePopup(recipe: any): void {
-    this.isUpdatePopupOpen = true;
-    this.updatedRecipe = { ...recipe };
-  }
-
-  closeUpdatePopup(): void {
-    this.isUpdatePopupOpen = false;
-  }
 
   ngOnInit(): void {
     this.recipeId = Number(this.route.snapshot.paramMap.get('recipeId'))
@@ -57,18 +49,25 @@ export class RecipeDetailComponent {
     });
   }
 
-  updateRecipe(updatedRecipe: any): void {
-    this.recipeService.updateRecipe(updatedRecipe.recipeId, updatedRecipe).subscribe({
+  startUpdate(recipe: Recipe): void {
+    this.isUpdating = true;
+    this.updatedRecipe = { ...recipe };
+  }
+
+  cancelUpdate(): void {
+    this.isUpdating = false;
+    this.updatedRecipe = {};
+  }
+
+  updateRecipe(): void {
+    this.recipeService.updateRecipe(this.updatedRecipe.recipeId, this.updatedRecipe).subscribe({
       next: (response) => {
         console.log('Recipe updated successfully:', response);
-  
-        // Update the recipes array with the updated recipe
         this.recipeDetails = this.recipeDetails.map((recipe) =>
-          recipe.recipeId === updatedRecipe.recipeId ? updatedRecipe : recipe
+          recipe.recipeId === this.updatedRecipe.recipeId ? response : recipe
         );
-  
-        // Close the update popup
-        this.closeUpdatePopup();
+        this.isUpdating = false;
+        this.updatedRecipe = {};
       },
       error: (error) => {
         console.error('Error updating recipe:', error);

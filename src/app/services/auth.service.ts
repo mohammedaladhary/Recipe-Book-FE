@@ -34,14 +34,6 @@ export class AuthService {
     return this.http.get<User>(`${this.apiUrl}/verify`, options);
   }
 
-  // getCurrentUser(): Observable<User | null> {
-  //   return this.currentUserSubject.asObservable();
-  // }
-  // getCurrentUserId(): number | null {
-  //   const currentUser = this.currentUserSubject.value;
-  //   return currentUser ? currentUser.id : null;
-  // }
-
   //signup method
   signup(user: User): Observable<User>{
     return this.http.post<User>(`${this.apiUrl}/signup`, user);
@@ -60,4 +52,12 @@ export class AuthService {
     localStorage.removeItem("Token")
     localStorage.removeItem("currentUser")
   }
+
+  // getCurrentUser(): Observable<User | null> {
+  //   return this.currentUserSubject.asObservable();
+  // }
+  // getCurrentUserId(): number | null {
+  //   const currentUser = this.currentUserSubject.value;
+  //   return currentUser ? currentUser.id : null;
+  // }
 }
